@@ -8,6 +8,7 @@ appenders:
     filters:
     - kind: threshold
       level: info
+
   file:
     kind: file
     path: warn.log
@@ -16,6 +17,7 @@ appenders:
     filters:
     - kind: threshold
       level: warn
+
   error-file:
     kind: file
     path: error.log
@@ -25,10 +27,20 @@ appenders:
     - kind: threshold
       level: error
 
+  info-file:
+    kind: file
+    path: info.log
+    encoder:
+      pattern: "{d} [{t}] {l} {M}:{m}{n}"
+    filters:
+    - kind: threshold
+      level: info
+
 root:
   level: info
   appenders:
   - console
+  - info-file
 
 loggers:
   test:
